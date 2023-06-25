@@ -182,43 +182,42 @@ if 'user_point' not in st.session_state:
     st.session_state.user_point = 0
                
 #재활용품 페이지
-if st.session_state.get('option1') == '재활용품 분리배출 하러 가기':
-  st.header("♻️재활용품 분리배출")
+st.title("♻️재활용품 분리배출")
   
-  if st.button("반납 방법 알아보기"):
-    img = Image.open('src/안내 사진/음료 투입.png')
-    img = img.resize((256, 256))
-    st.image(img)
-    rounded_div = """
-      <div style="background-color: #f4fbee; color: #006a34; 
-      ; padding: 10px; text-align: center; border-radius: 10px;">
-          음료는 아래에 있는 음료 투입구에 버려주세요 
-      </div>
-      """.format(st.session_state['point'])
-    st.markdown(rounded_div, unsafe_allow_html=True)
-    st.write("")
-    img = Image.open('src/안내 사진/페트병 분리수거.png')
-    img = img.resize((256, 256))
-    st.image(img)
-    rounded_div = """
-      <div style="background-color: #f4fbee; color: #006a34; 
-      ; padding: 10px; text-align: center; border-radius: 10px;">
-          페트병은 라벨을 제거하고 최대한 압축하여 배출구 위에 올려주세요
-      </div>
-      """.format(st.session_state['point'])
-    st.markdown(rounded_div, unsafe_allow_html=True)
-    st.write("")
-    img = Image.open('src/안내 사진/유리분리수거.png')
-    img = img.resize((256, 256))
-    st.image(img)
-    rounded_div = """
-      <div style="background-color: #f4fbee; color: #006a34; 
-      ; padding: 10px; text-align: center; border-radius: 10px;">
-          유리병은 라벨과 뚜껑의 재질이 다를 경우 분리해서 배출해주세요 
-      </div>
-      """.format(st.session_state['point'])
-    st.markdown(rounded_div, unsafe_allow_html=True)    
-    st.write("")
+if st.button("반납 방법 알아보기"):
+  img = Image.open('src/안내 사진/음료 투입.png')
+  img = img.resize((256, 256))
+  st.image(img)
+  rounded_div = """
+    <div style="background-color: #f4fbee; color: #006a34; 
+    ; padding: 10px; text-align: center; border-radius: 10px;">
+        음료는 아래에 있는 음료 투입구에 버려주세요 
+    </div>
+    """.format(st.session_state['point'])
+  st.markdown(rounded_div, unsafe_allow_html=True)
+  st.write("")
+  img = Image.open('src/안내 사진/페트병 분리수거.png')
+  img = img.resize((256, 256))
+  st.image(img)
+  rounded_div = """
+    <div style="background-color: #f4fbee; color: #006a34; 
+    ; padding: 10px; text-align: center; border-radius: 10px;">
+        페트병은 라벨을 제거하고 최대한 압축하여 배출구 위에 올려주세요
+    </div>
+  """.format(st.session_state['point'])
+  st.markdown(rounded_div, unsafe_allow_html=True)
+  st.write("")
+  img = Image.open('src/안내 사진/유리분리수거.png')
+  img = img.resize((256, 256))
+  st.image(img)
+  rounded_div = """
+    <div style="background-color: #f4fbee; color: #006a34; 
+    ; padding: 10px; text-align: center; border-radius: 10px;">
+        유리병은 라벨과 뚜껑의 재질이 다를 경우 분리해서 배출해주세요 
+    </div>
+    """.format(st.session_state['point'])
+  st.markdown(rounded_div, unsafe_allow_html=True)    
+  st.write("")
   upload_file = st.file_uploader('쓰레기를 투입구 위에 올려주세요',type=['jpg', 'png', 'jpeg'])
 
   if upload_file is not None:
