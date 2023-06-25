@@ -41,6 +41,12 @@ def classification(image):
     
 if 'user_point' not in st.session_state:
     st.session_state['user_point'] = 0
+if 'point' not in st.session_state:
+    st.session_state['point'] = some_initial_value  # replace some_initial_value with an appropriate initial value
+
+# Now you can safely use the 'point' key
+some_value = st.session_state['point']
+
 
 
 #재활용품 페이지
