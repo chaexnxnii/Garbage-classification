@@ -28,11 +28,24 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
 
+import os
+import tarfile
+import urllib.request
+
+import requests
+import os
+from tensorflow.keras.models import load_model
+
+# GitHub에서 모델 다운로드
+model_url = 'https://github.com/chaexnxnii/Garbage-classification/raw/main/src/saved_model.pb'
+model_path = 'saved_model.pb'
+
+response = requests.get(model_url)
+with open(model_path, 'wb') as f:
+    f.write(response.content)
 
 ## 쓰레기 인식 함수 ##
 def classification(image):
-  model_path = 'saved_mode.pb'
-
   model = load_model(model_path)
   
   # 예측
@@ -50,11 +63,7 @@ def classification(image):
   predicted_class_index = np.argmax(prediction)
   predicted_label = labels[predicted_class_index]
   return predicted_label
-  
 
-if 'user_point' not in st.session_state:
-    st.session_state.user_point = 0
-               
 #재활용품 페이지
 st.title("♻️재활용품 분리배출")
   
