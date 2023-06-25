@@ -63,6 +63,10 @@ def classification(image):
   predicted_class_index = np.argmax(prediction)
   predicted_label = labels[predicted_class_index]
   return predicted_label
+    
+if 'user_point' not in st.session_state:
+    st.session_state['user_point'] = 0
+
 
 #재활용품 페이지
 st.title("♻️재활용품 분리배출")
