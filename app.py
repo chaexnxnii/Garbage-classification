@@ -12,8 +12,8 @@ import os
 from tensorflow.keras.models import load_model
 
 # GitHub에서 모델 다운로드
-model_url = 'https://github.com/chaexnxnii/Garbage-classification/raw/main/src/saved_model.pb'
-model_path = 'saved_model.pb'
+model_url = 'https://github.com/chaexnxnii/Garbage-classification/raw/main/src/model.hy'
+model_path = 'model.hy'
 
 response = requests.get(model_url)
 with open(model_path, 'wb') as f:
