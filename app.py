@@ -92,26 +92,24 @@ if st.button("반납 방법 알아보기"):
     """.format(st.session_state['point'])
   st.markdown(rounded_div, unsafe_allow_html=True)    
   st.write("")
-  upload_file = st.file_uploader('쓰레기를 투입구 위에 올려주세요',type=['jpg', 'png', 'jpeg'])
+upload_file = st.file_uploader('쓰레기를 투입구 위에 올려주세요',type=['jpg', 'png', 'jpeg'])
 
-  if upload_file is not None:
-    img = Image.open(upload_file)
-    img = img.resize((256,256))
-    st.image(img, caption='Uploaded Image.', use_column_width=True)
+if upload_file is not None:
+  img = Image.open(upload_file)
+  img = img.resize((256,256))
+  st.image(img, caption='Uploaded Image.', use_column_width=True)
 
-    predicted_label = classification(upload_file)
-
-    price_dict = {'plastic': 20, 'glass': 20}
+  predicted_label = classification(upload_file)
+  price_dict = {'plastic': 20, 'glass': 20}
+ 
+  if predicted_label == '확인불가':
+      st.markdown("확인이 불가합니다. 올바르게 배출해주세요.")
+  else:
+      st.markdown(f"{predicted_label}을(를) 배출하셨습니다. {price_dict[predicted_label]}포인트가 지급되었습니다!")
+      st.session_state["user_point"] += price_dict[predicted_label]
     
-    if predicted_label == '확인불가':
-        st.markdown("확인이 불가합니다. 올바르게 배출해주세요.")
-    else:
-        st.markdown(f"{predicted_label}을(를) 배출하셨습니다. {price_dict[predicted_label]}포인트가 지급되었습니다!")
-        st.session_state["user_point"] += price_dict[predicted_label]
-
 st.sidebar.markdown(f"현재 적립포인트는 {st.session_state['user_point']}p입니다")
-
-# #       <b> 현재 적립포인트는 {}p입니다 </b>
-# #   </div>
+ #       <b> 현재 적립포인트는 {}p입니다 </b>
+ #   </div>
 # #   """
 # # st.sidebar.markdown(rounded_div.format(st.session_state['point']), unsafe_a)
