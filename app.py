@@ -142,13 +142,13 @@ if st.session_state.option1 == '재활용품 분리배출 하러 가기':
           
  
 
-for i in range(8):
-  st.sidebar.write("")
+# for i in range(8):
+#   st.sidebar.write("")
 
-rounded_div = """
-  <div style="background-color: #d4fbbd; color: #006a34
-  ; padding: 10px; text-align: center; border-radius: 10px;">
-      <b> 현재 적립포인트는 {}p입니다 </b>
-  </div>
-  """
-st.sidebar.markdown(rounded_div.format(st.session_state['point']), unsafe_a)
+# rounded_div = """
+#   <div style="background-color: #d4fbbd; color: #006a34
+#   ; padding: 10px; text-align: center; border-radius: 10px;">
+#       <b> 현재 적립포인트는 {}p입니다 </b>
+#   </div>
+#   """
+# st.sidebar.markdown(rounded_div.format(st.session_state['point']), unsafe_a)
