@@ -151,4 +151,4 @@ rounded_div = """
       <b> 현재 적립포인트는 {}p입니다 </b>
   </div>
   """
-st.sidebar.markdown(rounded_div.format(st.session_state['point']), unsafe_a
+st.sidebar.markdown(rounded_div.format(st.session_state['point']), unsafe_a)
