@@ -1,26 +1,26 @@
-# # import streamlit as st
-# # from tensorflow.keras.models import load_model
-# # from PIL import Image
-# # import numpy as np
+# import streamlit as st
+# from tensorflow.keras.models import load_model
+# from PIL import Image
+# import numpy as np
 
-# # st.title("Image Classifier")
+# st.title("Image Classifier")
 
-# # model = load_model('saved_model.pb')  # Load the model
+# model = load_model('saved_model.pb')  # Load the model
 
-# # uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png"])  # Image uploader
+# uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png"])  # Image uploader
 
-# # if uploaded_file is not None:
-# #     image = Image.open(uploaded_file)
-# #     st.image(image, caption='Uploaded Image.', use_column_width=True)
+# if uploaded_file is not None:
+#     image = Image.open(uploaded_file)
+#     st.image(image, caption='Uploaded Image.', use_column_width=True)
 
-# #     # Preprocess the image here (reshape, normalize, etc.)
-# #     # Assuming the function 'preprocess' does that
-# #     processed_image = preprocess(image)
+#     # Preprocess the image here (reshape, normalize, etc.)
+#     # Assuming the function 'preprocess' does that
+#     processed_image = preprocess(image)
 
-# #     # Make a prediction
-# #     predictions = model.predict(np.array([processed_image]))
-# #     predicted_class = np.argmax(predictions)
-# #     st.write(f"Predicted Class: {predicted_class}")
+#     # Make a prediction
+#     predictions = model.predict(np.array([processed_image]))
+#     predicted_class = np.argmax(predictions)
+#     st.write(f"Predicted Class: {predicted_class}")
 
 
 
@@ -142,12 +142,12 @@
           
  
 
-# # for i in range(8):
-# #   st.sidebar.write("")
+# for i in range(8):
+#   st.sidebar.write("")
 
-# # rounded_div = """
-# #   <div style="background-color: #d4fbbd; color: #006a34
-# #   ; padding: 10px; text-align: center; border-radius: 10px;">
+# rounded_div = """
+#   <div style="background-color: #d4fbbd; color: #006a34
+#   ; padding: 10px; text-align: center; border-radius: 10px;">
 
 import streamlit as st
 from tensorflow.keras.models import load_model
@@ -186,8 +186,39 @@ if st.session_state.get('option1') == '재활용품 분리배출 하러 가기':
   st.header("♻️재활용품 분리배출")
   
   if st.button("반납 방법 알아보기"):
-    # ... 이전 코드를 그대로 유지 ...
-
+    img = Image.open('src/안내 사진/음료 투입.png')
+    img = img.resize((256, 256))
+    st.image(img)
+    rounded_div = """
+      <div style="background-color: #f4fbee; color: #006a34; 
+      ; padding: 10px; text-align: center; border-radius: 10px;">
+          음료는 아래에 있는 음료 투입구에 버려주세요 
+      </div>
+      """.format(st.session_state['point'])
+    st.markdown(rounded_div, unsafe_allow_html=True)
+    st.write("")
+    img = Image.open('src/안내 사진/페트병 분리수거.png')
+    img = img.resize((256, 256))
+    st.image(img)
+    rounded_div = """
+      <div style="background-color: #f4fbee; color: #006a34; 
+      ; padding: 10px; text-align: center; border-radius: 10px;">
+          페트병은 라벨을 제거하고 최대한 압축하여 배출구 위에 올려주세요
+      </div>
+      """.format(st.session_state['point'])
+    st.markdown(rounded_div, unsafe_allow_html=True)
+    st.write("")
+    img = Image.open('src/안내 사진/유리분리수거.png')
+    img = img.resize((256, 256))
+    st.image(img)
+    rounded_div = """
+      <div style="background-color: #f4fbee; color: #006a34; 
+      ; padding: 10px; text-align: center; border-radius: 10px;">
+          유리병은 라벨과 뚜껑의 재질이 다를 경우 분리해서 배출해주세요 
+      </div>
+      """.format(st.session_state['point'])
+    st.markdown(rounded_div, unsafe_allow_html=True)    
+    st.write("")
   upload_file = st.file_uploader('쓰레기를 투입구 위에 올려주세요',type=['jpg', 'png', 'jpeg'])
 
   if upload_file is not None:
