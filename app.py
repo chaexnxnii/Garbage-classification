@@ -180,7 +180,14 @@ def classification(image):
   predicted_label = labels[predicted_class_index]
   return predicted_label
 
-나머지 코드는 그대로 유지
+if 'user_point' not in st.session_state:
+    st.session_state['user_point'] = 0
+if 'point' not in st.session_state:
+    st.session_state['point'] = 0  # Initializing 'point' to zero
+
+# Now you can safely use the 'point' key
+some_value = st.session_state['point']
+
 #재활용품 페이지
 st.title("♻️재활용품 분리배출")
   
