@@ -1,3 +1,6 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
 import os
 import io
 from datetime import datetime
@@ -24,14 +27,13 @@ response = requests.get(model_url)
 with open(model_path, 'wb') as f:
     f.write(response.content)
 
-import zipfile
-
 
 # 쓰레기 인식 함수
 def classification(image):
-  model_path = 'saved_model'
+  model_path = 'model_1'
 
   model = tf.saved_model.load(model_path)
+  ...
   
   # 예측
   f = image
