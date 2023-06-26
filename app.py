@@ -142,8 +142,8 @@ import json
 import tensorflow as tf
 
 # 모델 다운로드
-model_url = 'https://github.com/chaexnxnii/Garbage-classification/raw/main/model/saved_model.zip'
-model_path = 'saved_model.zip'
+model_url = 'https://github.com/chaexnxnii/Garbage-classification/raw/main/model'
+model_path = 'model'
 
 response = requests.get(model_url)
 with open(model_path, 'wb') as f:
@@ -151,9 +151,6 @@ with open(model_path, 'wb') as f:
 
 import zipfile
 
-# 모델 압축 해제
-with zipfile.ZipFile(model_path, 'r') as zip_ref:
-    zip_ref.extractall('saved_model')
 
 # 쓰레기 인식 함수
 def classification(image):
