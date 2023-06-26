@@ -4,13 +4,16 @@ import requests
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
+import zipfile
+
 
 # 모델 다운로드
 file_id = "1-6OK76mqdiwZ_uuOdcQYZYVbEfceicCs"
 url = f"https://drive.google.com/uc?id={file_id}"
 model_path = 'model.zip'
 gdown.download(url, model_path, quiet=False)
-
+with zipfile.ZipFile('model.zip', 'r') as zip_ref:
+    zip_ref.extractall()
 ## 쓰레기 인식 함수 ##
 @st.cache
 def load_trained_model(path):
